@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<!-- Main Content -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <h1 class="display-4 text-center my-4">My Profile</h1>
+
+    <!-- Example profile information (replace with actual user profile) -->
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">User Information</h5>
+            
+            <p class="card-text"><strong>Name:</strong> {{first_name}}</p>
+            <p class="card-text"><strong>Email:</strong> {{email}}</p>
+            <p class="card-text"><strong>Username:</strong>{{username}}</p>
+            
+            
+            <!-- Add more profile information as needed -->
+        </div>
+    </div>
+
+    <!-- Add profile editing or additional content as needed -->
+    <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+      </p>
+</main>
+
+{% endblock 'main' %}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Online Courses</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .wrapper {
+        flex: 1;
+        
+        
+    }
+
+        main {
+            flex: 1;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #dee2e6;
+        }
+         footer {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        margin-top: auto;
+    }
+
+        /* Add your custom styles here */
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Courses</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/home">
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/course">
+                    Courses
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">
+                    About
+                </a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    Logout
+            </a>
+            {% else %}
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">
+                    Login
+            </a>
+            {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidebar and Content -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar bg-dark" style="height: 100vh;">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/dashboard">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/my_course">
+                            My Courses
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/profile">
+                            Profile
+                        </a>
+                    </li>
+
+                
+                    {% else %}
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            
+                    </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+ 

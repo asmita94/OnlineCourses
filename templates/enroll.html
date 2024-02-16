@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<!-- Main Content -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="col-md-6 shadow mt-4 p-4 mx-auto">
+    <h1 class="display-4 text-center my-2">Enroll in a Course</h1>
+    
+    <div class="row d-flex justify-content-center">
+    <!-- Featured course cards -->
+{% for x in courses %}
+    <div class="col-5 mb-4">
+    <div class="card">
+        <img src="{{x.image.url}}" class="card-img-top" alt="..." style="height: 200px; width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{x.title}}</h5>
+            <p class="card-text text-center">{{x.description}}</p>
+            <p class="card-text text-center">Price:{{x.price}}</p>
+            {% if x.cate == 1 %}
+            <p class="card-text text-center">Beginner</p>
+            {% elif x.cate == 2 %}
+            <p class="card-text text-center">Intermediate</p>
+            {% else %}
+            <p class="card-text text-center">Advanced</p>
+            {% endif %}
+
+
+            <a href="/addcourse/{{x.id}}" class="btn btn-primary d-flex justify-content-center">Enroll</a>               
+            
+        </div>
+        {% if success %}
+        <div class="alert alert-success mt-5">
+            {{success}}
+        </div>
+        {% endif %}
+        
+        {% if msg %}
+        <div class="alert alert-danger mt-5">
+            {{msg}}
+        </div>
+        {% endif %}
+    </div>
+    </div>
+ {% endfor %}
+    <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+      </p>
+</main>
+
+{% endblock 'main' %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<!-- Main Content -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-3">
+    <div class="col-md-4 shadow mt-4 p-4 mx-auto">
+        <h2 class="text-center">Login</h2>
+        {% if errmsg %}
+        <div class="alert alert-danger">
+            {{errmsg}}
+        </div>
+        {% endif %}
+            <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="Input1" class="form-label">Username</label>
+                <input type="email" class="form-control" name="uname" id="Input1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="Input2" class="form-label">Password</label>
+                <input type="password" class="form-control" name="upass" id="Input2" placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            {% if success %}
+            <div class="alert alert-success">
+                {{ success }}
+            </div>
+            {% endif %}
+        </form>
+        <p class="mt-2">Not a user? <a href="/reg">Register here</a></p>
+    
+    </div>
+    
+    <p class="placeholder-glow">
+  <span class="placeholder col-12"></span>
+</p>
+</main>
+
+{% endblock 'main' %}
